@@ -1,0 +1,691 @@
+2019-06-05 Emmanuel Saracco <emmanuel@esaracco.fr>
+
+	* phpremoteshell is now hosted on GitHub.
+
+2019-06-04 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.12.1
+
+	* SQL shell:
+
+	  - Added PDO MySQL support.
+	  - Added PDO PostgreSQL support.
+	  - Fixed MySQL support detection.
+
+	* Crontab:
+
+	  - Fixed crontab detection.
+
+	* Reverse shell:
+
+	  - Fixed reverse shell editors detection.
+
+2019-06-03 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.12
+
+	* Reverse shell:
+
+	  - Added real PHP reverse shell on remote hosts that support it.
+
+	* Other:
+
+	  - Big rewriting and debug (especially on the file browser)... There
+	    is still a lot of work to be done, but it always works better
+	    than before :-)
+
+2008-12-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.11
+
+	* LDAP shell:
+
+	  - Results display enhancements.
+
+2008-12-05 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* LDAP shell:
+
+	  - Added Dump feature (for DNs and their subtree).
+	  - Fixed a problem with UTF-8.
+
+	* Other:
+
+	  - Javascript cleaning.
+
+2008-12-04 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* LDAP shell:
+
+	  - LDIF LDAP support.
+
+2008-12-02 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* LDAP shell:
+
+	  - Added basic LDAP support. Still a work in progress.
+
+2008-11-30 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* SQL shell:
+
+	  - Now one can get per table dump.
+	  - Now one can get full database dump.
+	  - First steps of a SQL shell for both PostgreSQL and MySQL.
+
+2008-11-29 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Some code cleaning.
+	  - Smarter PRS launcher.
+
+2008-11-28 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - There was a problem of information exposure with the "direct
+	    download" feature introduced in 0.10 :-) It should be fixed now,
+	    but I need some more tests.
+
+2008-11-27 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.10
+
+	* Other:
+
+	  - Now PRS can be downloaded directly by passing "prsds=" URL
+	    parameter when calling it. Note that this feature will not work
+	    if you previously defined authentication to true, or if you have
+	    encrypted it.
+	  - Fixed a lot of problems with PRS remote inclusion. Now, it can
+	    easily be included remotely by exploiting require*/include* calls.
+	  - Added a script to strip PRS from comments and useless spaces.
+	    Also this script is automatically used before PRS encryption.
+	  - Added some new displayed informations: client IP, vhost IP and
+	    remote routing table.
+
+2008-07-18 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+
+	  - File rights detection cleaning.
+	  - Fixed a problem with "Display options" box.
+
+2008-06-10 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.9.0
+
+2008-05-25 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Added a PHP error console. Can be useful when working on servers
+	    with strange behaviour, to understand what is happening.
+	  - Now all files and directories are created 0666 and 0777 when
+	    server allow it.
+
+	* File browser:
+
+	  - Fixed some problems with IE6.
+
+2008-05-21 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Display a alert message to the user when PRS can not self-removing
+	    itself from the server.
+
+2008-05-20 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Added a Javascript console. It is now possible to send custom
+	    javascript to zombie.
+	  - Some Ajax enhancement.
+	  - Fixed a problem with file path construction.
+
+2008-04-24 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Remote shell:
+	  
+	  - Added command reset button.
+	  - Added history reset button.
+
+2008-03-28 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.8.2
+
+2008-03-27 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Fixed a problem with some particular servers and tmpdir detection. 
+	    Some servers allow directory creation, but not directory 
+	    deletion... So, now zombies management should work on these 
+	    servers too.
+
+2008-03-26 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Fixed a logic error, which could prevent PRS to detect the
+	    correct storage mode.
+
+2008-03-21 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+
+	  - Fixed a problem with rights detections.
+
+	* Other:
+
+	  - Fixed a problem with executable method detection.
+
+2007-12-22 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.8.1
+
+2007-12-15 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Fixed some issues with IE.
+	  - Added the use of hidden iframe to spy user navigation. This
+	    feature does not work yet with IE, so it can be enabled/disabled
+	    using the ZOMBIE_USE_HIDDEN_IFRAME constant.
+
+2007-12-11 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+
+	  - Added display options (to filter hidden files, directories,
+	    symlinks or files)
+	  - Colors enhancement.
+	  - Sort enhancement (same sort, whatever browse method is used).
+	
+
+2007-12-10 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.8.0
+
+2007-12-08 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Better safe mode handling.
+	  - Better recursive directory deletion.
+
+2007-12-07 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Better DHTML management.
+	  - Smarter keylogger interpreter.
+
+2007-12-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Added a "Control center". It is now possible to ping hosts with
+	    the zombie (so you can bypass firewall etc.). For the moment hosts 
+	    must have port 80 open to appear alive.
+	  - Menu reorganization.
+
+2007-12-04 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Fixed some bad display logic with javascript code.
+
+	* Other:
+
+	  - Launcher code cleaning.
+
+2007-12-04 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Added "Delete" menu.
+	  - Added "Reset" and "Add separator" menu to keylogger viewer.
+
+2007-12-03 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Ajax refresh.
+	  - Listing and edition.
+	  - Smarter keylogger interpreter.
+
+	* Other:
+	
+	  - Some README/INSTALL update.
+
+2007-12-02 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Zombies:
+
+	  - Very first steps for "Zombies" management (based on BeEF ideas).
+
+2007-11-16 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Now the use of the "launcher.html" file is required to open PRS
+	    shell. All GET access will result on a "404 Not Found" HTTP
+	    error. Just open this file with your Web browser and click the
+	    "Launch" button.
+
+2007-11-15 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.7.0
+
+2007-11-14 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Encryption:
+
+	  - PRS is now able to encrypt/decrypt itself on request. What you
+	    have to do is just encrypt it with a secret key (using tools
+	    available in the "encryption/" directory), put the encrypted
+	    file on a remote server and request it by passing it your secret 
+	    key using HTML POST method (see the "post.html" file). It is
+	    a ugly/lame/experimental feature, so take it as a PoC and play
+	    with it :-) Do not hesitate to send me ideas or patches!
+
+	* PHP:
+
+	  - Now take in account "open_basedir" PHP configuration variable.
+
+2007-11-12 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Self-recovery: 
+
+	  - PRS can now host itself in another PHP script on the server to
+	    be able to self-restore itself at script execution time. Noisy
+	    game though, so think twice before playing it :-)
+
+	 * Other:
+
+	   - Now take in account the safe mode's variable "safe_mode_exec_dir".
+	   - Added some more information at the page top (exec method, FS
+	     exploration method).
+	   - Again some fixes for runtime magic quotes.
+	   - Some file size calculation fixes (when "filesize()" function is
+	     disabled).
+
+2007-11-10 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* PHP:
+
+	  - PHP Exec* functions wrapper debug and optimization.
+
+2007-11-08 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Code cleaning.
+
+2007-11-07 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Crontab:
+
+	  - Added crontab management when available.
+
+	* Other:
+
+	  - Added some information at the page top (PHP safe mode, storage
+	    method (cookies/script)...).
+
+2007-11-07 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.6.1
+
+2007-11-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* PHP:
+
+	  - Now use "proc_open()" when "popen()" is not available.
+
+	* Other:
+
+	  - Fixed a typo that broke download functionality.
+	  - It is now possible to force file saving and deletion, even if 
+	    PRS think that file can not saved or deleted.
+	  - PRS is now able of self-modify itself to save dynamic data in
+	    its own file. If it fail (ie. bad PRS file rights) it use 
+	    traditional cookie method.
+	  - Safer read/write file functions.
+	  - Code cleaning and minor enhancements.
+
+2007-11-05 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.6.0
+
+	* Popups:
+
+	  - Fixed a problem on popup closure with IE.
+
+	* PHP:
+
+	  - Fixed a problem with magic quotes.
+
+	* File browser:
+
+	  - Better download handling in safe mode.
+	  - It is now possible to force file edition, even if PRS think that
+	    it can not be viewed.
+	  - Fixed a problem with directories deletion when "opendir()"
+	    function is not available (use "glob()" instead).
+	  - Better browse mode detection management.
+	  - Added bookmarks management for directory location.
+	  - It is now possible to visualize images found on the server.
+
+	* Other:
+
+	  - Fixed problem with HTML output.
+	  - Code cleaning.
+
+2007-11-04 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Menus:
+	  
+	  - Added a "Remove me!" menu item. It just remove the prs.php script 
+	    from the server.
+
+	* File browser:
+
+	  - Try to use "glob()" if "opendir()"/"readdir()" or "ls" system 
+	    command are not available.
+	  - A lot of improvments on directories/files display.
+	  - Fixed a problem with sticky directories.
+	  - Fixed a problem with recursive directories deletion.
+	  - Fixed a problem with especially crafted directories names.
+	  - Added "Create directory" menu. User can now create directories.
+	  - Files with appropriate rights can be fully edited. PRS will try to
+	    preserve original timestamp if Web user is the same as file owner.
+
+	* Other:
+
+	  - When in safe mode, we try to display "phpinfo()" output in the 
+	    "Remote information" section.
+
+2006-07-15 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.5.2
+
+	* Other:
+
+	  - Can now handle HTML output for both Shell commands and PHP code 
+	    section.
+	  - A temporary fix for utf8 decode function (it hopefully do not 
+	    cause web server child segfault anymore).
+
+2006-06-17 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Some fixes with safe mode/unavailable functions handleling.
+
+2006-06-15 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+
+	  - Some fixes with safe mode/unavailable functions handleling.
+
+2006-06-14 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Menus:
+
+	  - Better menu management.
+
+	* Other:
+
+	  - Better safe mode handling.
+	  - Code cleaning.
+
+2006-06-13 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+
+	  - Now it should work on some condition with PHP safe mode.
+
+2006-06-12 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* PHP:
+
+	  - Converted all short PHP tags to allow phpRemoteShell to work with
+	    "short_open_tag=Off".
+
+2006-06-12 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.5.1
+
+	* PHP:
+	  - Fixed a problem with PHP versions that do not allow
+	    'magic_quotes_gpg' control setting with 'ini_set()'.
+
+	* Remote shell:
+	  - Added possibility to only select a command to be run again in the 
+	    history box without automatically executing it.
+
+	* Popups:
+	  - Now popups can be moved only in the box title area.
+
+2006-06-11 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.5.0
+
+	* File browser:
+	  - "Download" feature is now totally silent (STDOUT is redirected to
+	    "/dev/null").
+	  - Fixed a problem with "sticky bit" attribute.
+	  - No anymore output buffering. Now output is printed directly on 
+	    STDOUT (to prevent performance problem with IE).
+
+	* Profiles:
+	  - Added "profile" management feature.
+
+	* PHP code:
+	  - Fixed a problem with "highlight code" feature for old PHP versions.
+
+	* Other:
+	  - Some code cleaning.
+
+2006-06-09 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Stylesheet:
+	  - New CSS.
+
+	* PHP code:
+	  - Added highlight code feature.
+
+2006-06-08 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Menus:
+	  - Now menus can manage subitems.
+	  - Now popups can be moved anywhere, and position remains after 
+	    submits.
+	  - Rewrote all the menus.
+	  - Compatibility IE6/FireFox/Konqueror should be ok.
+
+2006-06-07 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Remote informations:
+	  - Display Apache2 information.
+
+	* File browser:
+	  - Added initial path control feature.
+
+2006-06-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Remote shell:
+	  - Added environment PATH control feature.
+	  - Updated popup management.
+
+2006-06-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.4.1
+
+	* File browser:
+	  - Fixed a problem with output buffer initialisation.
+
+	* Other:
+	  - Fixed a problem with BasicAuth.
+	  - Fixed a problem with simple quotes escape.
+
+2006-06-05 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.4.0
+
+	* Remote shell:
+	  - Added command aliases feature.
+
+	* File browser:
+	  - Fixed a problem with sockets.
+	  - Fixed many problems with symlinks.
+
+	* Other:
+	  - Fixed a lot of bugs.
+	  - Some code cleaning.
+
+2006-05-31 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Other:
+	  - Updated PHP 'safe_mode' detection management.
+
+2006-05-30 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Fixed a problem with file date management on some systems.
+
+2006-02-12 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.3.1
+
+2006-02-11 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Added a "upload" feature. User can now upload a file
+	    if the remote HTTP server user is authorized to write on the
+	    current browsed directory.
+	  - Fixed a problem with special chars filenames.
+	  - Directories with no read permission are not clickable
+	    anymore.
+
+2006-02-06 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Stylesheet:
+	  - Fixed bug #719 (values for paddings are set without unit).
+	    Thanks to Valery Febvre.
+
+	* File browser:
+	  - Updated legend box.
+	  - Better management of actions/rights.
+
+	* Remote informations:
+	  - Do not display empty keys.
+
+2005-05-30 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Added a color legend.
+	  - Both sockets and symlinks are not shown writable.
+		
+	* Other:
+	  - Updated tar/gzip management to be Solaris Compliant.
+
+2005-03-28 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Remote informations:
+	  - Added informations about web server.
+
+	* Other:
+	  - Added check for PHP 'safe_mode'. If activated,
+	    phpRemoteShell can not run correctly.
+
+2005-03-20 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Stylesheet:
+	  - Some updates.
+
+2005-03-17 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.3.0
+
+	* File browser:
+	  - Some enhancements.
+	
+	* Other:
+	  - Added authentication. It is deactivated by default. To
+	    activate it, set the 'CHECK_AUTH' constant to 'true'. And do not 
+	    forget to change login and password :-)
+
+2005-03-16 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - The 'Delete' button now only appear if the file can be deleted.
+
+	* Settings:
+	  - Created a config section for download parameters.
+
+	* Other:
+	  - Some HTML enhancements.
+
+2005-03-15 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Fixed some bugs.
+
+2005-03-14 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Added 'Download' feature.
+
+2005-03-13 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Added 'Delete' feature for files.
+
+	* Remote informations:
+	  - Added informations about PHP, Perl, MySQL and PostgreSQL.
+
+2005-02-27 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.2.1
+
+	* File browser:
+	  - Fixed several bugs.
+	  - Now use blue color for files with write access.
+
+	* PHP:
+	  - Fixed a problem with PHP versions that do not allow
+	    'magic_quotes_gpg' setting with 'ini_set()'.
+	  - Fixed a lot of PHP warnings.
+
+2005-01-08 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - Do not display system devices.
+
+2005-01-08 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.2.0
+
+	* File browser:
+	  - Added a navigation bar.
+	  - All lot of other enhancements.
+
+	* Compatibility:
+	  - Fixed a bug with "fgets" function for PHP < 4.2.0.
+	  - Fixed a problem with "split" function.
+
+2005-01-07 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* File browser:
+	  - First commit of basic file browser.
+
+2005-01-02 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.1.0
+	
+	* Initial release

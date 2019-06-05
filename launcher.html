@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>phpRemoteShell file launcher</title>
+  <style>
+    * {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px;}
+    input {border: 1px black solid; background: #98b2d7; color: black;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;}
+    a {color: cornflowerblue;}
+    p {text-align:center;}
+    table {border: 1px cornflowerblue solid;margin:auto;margin-top:20px;padding:10px;width:60%;}
+    tr.submit td {text-align: center;padding-top:20px;}
+    th {text-align: right;width:120px;}
+    td.value input {padding:5px;width:98%;}
+    caption {background: black; color: cornflowerblue;border: 2px cornflowerblue solid; border-bottom:none;text-align: center; padding: 5px;}
+    #title {background: cornflowerblue; border: 1px black solid; padding: 5px;text-align: center; font-weight: bold; font-size: 12px;}
+    #title span {color: white;}
+  </style>
+  <script language="javascript">
+
+    function update_prs_location (f)
+    {
+      var url = f.prs_location.value.trim ();
+  
+      if (url.search (/^http/i) < 0)
+        url = 'http://'+url;
+  
+      if (url.search (/\.php\d?$/i) < 0)
+        url += (url.search (/\/$/) < 0) ? '/prs.php' : 'prs.php';
+  
+      f.prs_location.value = url;
+      f.action = url;
+    }
+  </script>
+  </head>
+<body onLoad="update_prs_location (document.forms[0]);">
+
+  <div id="title">
+    Welcome to <span>phpRemoteShell</span> file requester
+  </div>
+  
+  <p>The current form will be <b>POST</b>ed here&nbsp;:</p>
+
+  <div id="prs_location"> </div>
+
+  <form method="post" name="prs" target="_blank" action="http://localhost/prs.php" onchange="update_prs_location(this)">
+
+    <table>
+      <caption>Launcher</caption>
+      <tr>
+        <th>PRS URL : </th>
+        <td class="value"><input type="text" name="prs_location" value="http://localhost/prs.php"/></td>
+      </tr>
+      <tr>
+        <th>Encryption Key : </th>
+        <td class="value"><input type="text" name="cryptkey" value=""/></td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2"><input type="submit" value="Launch"/></td>
+      </tr>
+    </table>
+  
+  </form>
+
+</body>
+</html>
