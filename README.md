@@ -1,5 +1,7 @@
 # phpRemoteShell
 
+[Project homepage](http://phpremoteshell.esaracco.fr)
+
 PHP Remote Shell is a swiss knife to explore servers through the Web. It contains a PHP reverse shell, a full-featured file browser, the ability to execute shell commands or PHP/SQL/LDAP code, crontab management, and « zombies » management. It can also host itself into existing files and auto-deploy during their execution. In case it has been previously encrypted, it is able to self-decrypt on the fly.
 
 It has been designed to be robust and run with just about all POSIX servers and decent PHP versions. It may look a little rustic sometimes, but it should work everywhere.
