@@ -1,4 +1,4 @@
-# phpRemoteShell
+# PHP Remote Shell
 
 [Project homepage](http://phpremoteshell.esaracco.fr)
 
