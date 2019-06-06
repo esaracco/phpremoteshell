@@ -2,11 +2,11 @@
 
 [Project homepage](http://phpremoteshell.esaracco.fr)
 
-PHP Remote Shell is a swiss knife to explore servers through the Web. It contains a PHP reverse shell, a full-featured file browser, the ability to execute shell commands or PHP/SQL/LDAP code, crontab management, and « zombies » management. It can also host itself into existing files and auto-deploy during their execution. In case it has been previously encrypted, it is able to self-decrypt on the fly.
+PHP Remote Shell is a Swiss army knife for exploring servers via the Web. It contains a reverse shell in PHP, a full file browser, the ability to execute shell commands or PHP / SQL / LDAP code, crontab management and « zombies » management. It can also nest itself in existing files in order to redeploy automatically during their execution. If it has been previously encrypted, it is able to decrypt itself on the fly.
 
-It has been designed to be robust and run with just about all POSIX servers and decent PHP versions. It may look a little rustic sometimes, but it should work everywhere.
+It was designed to be robust and work with just about any POSIX server with a decent version of PHP. It may look a bit rustic at times, but it should work everywhere.
 
-PRS will be as quiet as possible, using only POST requests, displaying images using inline tags, keeping session data in its own file instead of cookie where possible, and so on.
+PHP Remote Shell will be as silent as possible, using only POST requests, displaying images using inline data, keeping session in its own file instead of cookies when possible, and so on.
 
 ## Requirement
 
