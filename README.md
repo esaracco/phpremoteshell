@@ -13,14 +13,17 @@ PHP Remote Shell will be as silent as possible, using only POST requests, displa
 You need a POSIX machine with PHP CLI on local, and a POSIX server with a PHP web service up on remote.
 
 ## Installation
-
-Basically, you just have to put `prs.php` somewhere on the Web and access it with a POST request (GET requests will display a HTTP 404 error).
+If you retrieved PRS by cloning the Git repository, you first need to change the permissions of some files as follows :
+```bash
+chmod +x encryption/crypt.php strip/strip.php
+```
+To install and use PRS you just have to put `prs.php` somewhere on the Web and access it with a POST request (GET requests will display a HTTP 404 error).
 
 The simplest way to request PRS URL once uploaded is to open `launcher.html` with a web browser and fill the form.
 
 You can use PRS _as is_ or you can encrypt it before uploading it on the remote host. Encryption is a guaranty for you that nobody will read the source code neither your authentication parameters if any. Knowing this, you can add what you want in it, your secrets will be well protected, even on remote :-)
 
-To encrypt the script, go to `encryption/` and execute `./crypt yourpasswd`. The final encrypted `prs.php` file will be created in the same directory. This is the file to upload on remote host.
+To encrypt the script, go to `encryption/` and execute `./crypt.php yourpasswd`. The final encrypted `prs.php` file will be created in the same directory. This is the file to upload on remote host.
 
 The `launcher.html` file allow you to specify your encryption password before requesting the PRS page.
 
