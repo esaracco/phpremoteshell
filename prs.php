@@ -5272,10 +5272,26 @@
 
     function get_prs_url ()
     {
-      return (isset ($_SERVER['HTTP_PROTO'])) ? 
-        $_SERVER['HTTP_PROTO'] : 'http' . '://' .
-        $_SERVER['HTTP_HOST'] . ':' . $_SERVER['SERVER_PORT'] . 
-        $_SERVER['SCRIPT_NAME'];
+      $ret = '';
+
+      if (empty ($_SERVER['SCRIPT_URI']))
+      {
+        $s = ($_SERVER['SERVER_PORT'] == 443 ||
+              !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ?
+                'https':'http';
+
+        $p = (!empty ($_SERVER['SERVER_PORT']) &&
+              $_SERVER['SERVER_PORT']!= 443 && $_SERVER['SERVER_PORT']!= 80) ?
+                ':'.$_SERVER['SERVER_PORT'] : '';
+
+        $ret = "$s://".$_SERVER['HTTP_HOST']."$p".$_SERVER['SCRIPT_NAME'];
+      }
+      else
+      {
+        $ret = $_SERVER['SCRIPT_URI'];
+      }
+
+      return $ret;
     }
 
     // Thanks to BeEF :-)
