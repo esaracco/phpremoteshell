@@ -1,24 +1,29 @@
-# phpRemoteShell
+# PHP Remote Shell
 
-phpRemoteShell is swiss knife to explore servers through the Web. It contains a PHP reverse shell, a full-featured file browser, the ability to execute shell commands or PHP/SQL/LDAP code, crontab management, and « zombies » management. It can also host itself into existing files and auto-deploy during their execution. In case it has been previously encrypted, it is able to self-decrypt on the fly.
+[Project homepage](http://phpremoteshell.esaracco.fr)
 
-It has been designed to be robust and run with just about all POSIX servers and decent PHP versions. It may look a little rustic sometimes, but it should work everywhere.
+PHP Remote Shell is a Swiss army knife for exploring servers via the Web. It contains a reverse shell in PHP, a full file browser, the ability to execute shell commands or PHP / SQL / LDAP code, crontab management and « zombies » management. It can also nest itself in existing files in order to redeploy automatically during their execution. If it has been previously encrypted, it is able to decrypt itself on the fly.
 
-PRS will be as quiet as possible, using only POST requests, displaying images using inline tags, keeping session data in its own file instead of cookie where possible, and so on.
+It was designed to be robust and work with just about any POSIX server with a decent version of PHP. It may look a bit rustic at times, but it should work everywhere.
+
+PHP Remote Shell will be as silent as possible, using only POST requests, displaying images using inline data, keeping session in its own file instead of cookies when possible, and so on.
 
 ## Requirement
 
 You need a POSIX machine with PHP CLI on local, and a POSIX server with a PHP web service up on remote.
 
 ## Installation
-
-Basically, you just have to put `prs.php` somewhere on the Web and access it with a POST request (GET requests will display a HTTP 404 error).
+If you retrieved PRS by cloning the Git repository, you first need to change the permissions of some files as follows :
+```bash
+chmod +x encryption/crypt.php strip/strip.php
+```
+To install and use PRS you just have to put `prs.php` somewhere on the Web and access it with a POST request (GET requests will display a HTTP 404 error).
 
 The simplest way to request PRS URL once uploaded is to open `launcher.html` with a web browser and fill the form.
 
 You can use PRS _as is_ or you can encrypt it before uploading it on the remote host. Encryption is a guaranty for you that nobody will read the source code neither your authentication parameters if any. Knowing this, you can add what you want in it, your secrets will be well protected, even on remote :-)
 
-To encrypt the script, go to `encryption/` and execute `./crypt yourpasswd`. The final encrypted `prs.php` file will be created in the same directory. This is the file to upload on remote host.
+To encrypt the script, go to `encryption/` and execute `./crypt.php yourpasswd`. The final encrypted `prs.php` file will be created in the same directory. This is the file to upload on remote host.
 
 The `launcher.html` file allow you to specify your encryption password before requesting the PRS page.
 
