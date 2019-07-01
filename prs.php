@@ -22,7 +22,7 @@
   if (!class_exists ('phpRemoteShell')){
 
   define ('APP_NAME', 'phpRemoteShell');
-  define ('APP_VERSION', '0.12.1git201906151');
+  define ('APP_VERSION', '0.12.2');
 
   // Main configuration array
   $config = array ();

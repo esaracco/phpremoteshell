@@ -1,3 +1,18 @@
+2019-07-01 Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+
+	* Version: 0.12.2
+
+	* Zombies:
+
+	  - Keylogger improvement.
+
+	* Other:
+
+	  - A bit of cosmetics and optimizations.
+	  - Safer current URL detection.
+	  - Improvement of public IP detection and display of the remote
+	    information.
+
 2019-06-05 Emmanuel Saracco <emmanuel@esaracco.fr>
 
 	* phpremoteshell is now hosted on GitHub.
