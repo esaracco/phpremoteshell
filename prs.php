@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (C) 2005-2019
- * Emmanuel Saracco <esaracco@users.labs.libre-entreprise.org>
+ * Emmanuel Saracco <emmanuel@esaracco.fr>
  *
  * GNU GENERAL PUBLIC LICENSE
  */
